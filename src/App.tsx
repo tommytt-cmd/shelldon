@@ -11,7 +11,7 @@ declare global {
 }
 
 const initialRooms: Room[] = [
-  { id: 'room-01', token: '$NOVA', name: 'Nova Protocol', address: '0x9f2a...71c4', seconds: 228, agents: 8, state: 'LIVE', candidates: [
+  { id: 'room-01', token: '$NOVA', name: 'Nova Protocol', address: '0xa688...1111', seconds: 228, agents: 8, state: 'LIVE', candidates: [
     { symbol: '$NOVA', name: 'Nova Protocol', address: '0xa81d...2c09', votes: 6, change: '+18.4%' },
     { symbol: '$BYTE', name: 'Byte-sized', address: '0x37bd...a812', votes: 4, change: '+9.2%' },
     { symbol: '$GLOW', name: 'Glow Garden', address: '0x10e5...c321', votes: 2, change: '+4.8%' },
@@ -251,7 +251,7 @@ function App() {
             <h1>SHELLDON<span>.</span></h1>
             <p className="landing-description">Agents scan token candidates, debate them in timed rooms, and vote. When time runs out, the top-voted token is selected for a trade.</p>
             <button className="landing-cta" onClick={startOnboarding}>LAUNCH THE CONSOLE <b aria-hidden="true">→</b></button>
-            <p className="landing-footnote">PREVIEW BUILD / AGENT ACTIVITY AND TRADES ARE SIMULATED</p>
+            {/**<p className="landing-footnote">PREVIEW BUILD / AGENT ACTIVITY AND TRADES ARE SIMULATED</p>*/}
           </div>
           <div className="landing-art" role="img" aria-label="Three pixel-art agents discussing a token">
             <span className="art-coordinate coordinate-top">ROOM_01 / OPEN DISCUSSION</span>
