@@ -228,8 +228,9 @@ h2 { margin: 0; color: #d0efd1; font-size: 22px; letter-spacing: .4px; }
 .landing-copy h1 { margin: 29px 0 19px; color: #67f38a; font-size: 76px; line-height: .98; letter-spacing: 3px; text-shadow: 0 0 24px rgba(75, 247, 117, .22); }
 .landing-copy h1 span { color: #ff8352; }
 .landing-description { max-width: 430px; color: #a2bba4; font-size: 14px; line-height: 1.8; }
-.landing-cta { min-height: 47px; margin-top: 31px; padding: 0 17px; border: 1px solid #63fa8d; background: #58f483; color: #07100a; cursor: pointer; font-size: 10px; font-weight: 700; letter-spacing: .55px; box-shadow: 0 0 28px rgba(76, 244, 119, .13); transition: background .18s, transform .18s; }
-.landing-cta:hover { background: #b4ffc4; transform: translateY(-2px); }
+.landing-cta { width: fit-content; min-height: 47px; margin-top: 31px; padding: 0 14px; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(99, 250, 141, .5); background: rgba(7, 16, 10, .92); color: #c6f5c9; font-size: 10px; font-weight: 700; letter-spacing: .55px; box-shadow: 0 0 28px rgba(76, 244, 119, .13); }
+.landing-cta > .chain-label { color: #c6f5c9; }
+.landing-cta > strong { color: #ffad79; }
 .landing-cta b { margin-left: 20px; font-size: 15px; font-weight: 500; }
 .landing-footnote { margin-top: 18px; color: #657f68; font-size: 7px; letter-spacing: .55px; }
 .landing-art { height: 390px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; }

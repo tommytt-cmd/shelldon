@@ -1,4 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768">
+  <style>
+    .logo-eyes {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: blink 5s infinite;
+    }
+    @keyframes blink {
+      0%, 94%, 98%, 100% { transform: scaleY(1); }
+      96% { transform: scaleY(0.08); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-eyes { animation: none; }
+    }
+  </style>
   <rect width="768" height="768" fill="#030905"/>
   <g fill="#ff873d">
     <path d="M203 44h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35z"/>
@@ -8,7 +22,7 @@
     <path d="M584 179h19v74h-19zm0 83h19v70h-19zm-36 80h19l-29 72h-19z"/>
     <path d="M255 146h25v12h-25zm42-19h35v12h-35zm47 0h35v12h-35zm48 19h25v12h-25z"/>
     <path d="M207 179h28l12 9 8 13v20l-8 15-12 10h-28l-14-10-8-15v-20l8-13zm140 0h28l12 9 8 13v20l-8 15-12 10h-28l-14-10-8-15v-20l8-13z"/>
-    <path d="M242 199h12v20h-12zm140 0h12v20h-12z"/>
+    <path class="logo-eyes" d="M242 199h12v20h-12zm140 0h12v20h-12z"/>
     <path d="M295 289h39v28h-39zm-51 121h91v9h-91zm93 0h94v9h-94z"/>
     <path d="M165 421h19v26h-19zm326 0h19v26h-19z"/>
     <path d="M203 450h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35zm47 0h35v12h-35z"/>

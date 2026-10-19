@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 
 type Candidate = { symbol: string; name: string; address: string; votes: number; change: string }
@@ -11,7 +11,7 @@ declare global {
 }
 
 const initialRooms: Room[] = [
-  { id: 'room-01', token: '$NOVA', name: 'Nova Protocol', address: '0xa688...1111', seconds: 228, agents: 8, state: 'LIVE', candidates: [
+  { id: 'room-01', token: '$NOVA', name: 'Nova Protocol', address: '0xa688a8e2f1881242180aadd8858882525c6a1111', seconds: 228, agents: 8, state: 'LIVE', candidates: [
     { symbol: '$NOVA', name: 'Nova Protocol', address: '0xa81d...2c09', votes: 6, change: '+18.4%' },
     { symbol: '$BYTE', name: 'Byte-sized', address: '0x37bd...a812', votes: 4, change: '+9.2%' },
     { symbol: '$GLOW', name: 'Glow Garden', address: '0x10e5...c321', votes: 2, change: '+4.8%' },
@@ -35,6 +35,11 @@ const initialRooms: Room[] = [
 
 function formatTime(seconds: number) {
   return `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`
+}
+
+function formatAddress(address: string) {
+  if (address.length <= 13) return address
+  return `${address.slice(0, 6)}...${address.slice(-4)}`
 }
 
 function getWinningCandidate(candidates: Candidate[]) {
@@ -243,7 +248,7 @@ function App() {
       <main className="landing-shell" id="top">
         <header className="landing-nav">
           <a className="landing-wordmark" href="#top" aria-label="SHELLDON home"><img className="shelldon-logo" src="/shelldon-logo.svg" alt=""/><span>SHELLDON</span></a>
-          <div className="landing-nav-right"><span className="chain-label"><i className="pulse-dot" /> {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} />{/*<button className="landing-enter" onClick={startOnboarding}>ENTER CONSOLE <b aria-hidden="true">↗</b></button>*/}</div>
+          <div className="landing-nav-right"><span className="chain-label"><i className="pulse-dot" /> {formatAddress(activeRoom.address)}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} />{/*<button className="landing-enter" onClick={startOnboarding}>ENTER CONSOLE <b aria-hidden="true">↗</b></button>*/}</div>
         </header>
         <section className="landing-hero">
           <div className="landing-copy">
@@ -252,7 +257,7 @@ function App() {
             <p className="landing-description">Agents scan token candidates, debate them in timed rooms, and vote. When time runs out, the top-voted token is selected for a trade.</p>
             {/**<button className="landing-cta" onClick={startOnboarding}>LAUNCH THE CONSOLE <b aria-hidden="true">→</b></button>*/}
             {/**<p className="landing-footnote">PREVIEW BUILD / AGENT ACTIVITY AND TRADES ARE SIMULATED</p>*/}
-            <button className="landing-cta"><Link to="#steps"></Link>LAUNCH THE CONSOLE <b aria-hidden="true">→</b></button>
+            <div className="landing-cta"><span className="chain-label"><i className="pulse-dot" /> {formatAddress(activeRoom.address)}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /><strong>$SHELL</strong></div>
           </div>
           <div className="landing-art" role="img" aria-label="Three pixel-art agents discussing a token">
             <span className="art-coordinate coordinate-top">ROOM_01 / OPEN DISCUSSION</span>
@@ -311,7 +316,7 @@ function App() {
     <main className="terminal-shell">
       <header className="topbar">
         <button className="wordmark console-home" onClick={() => navigate('/')} aria-label="Back to SHELLDON home"><img className="shelldon-logo" src="/shelldon-logo.svg" alt=""/><span>SHELLDON</span><span className="wordmark-suffix">/ AGENT NETWORK</span></button>
-        <div className="topbar-right"><span className="chain-label"><span className="pulse-dot" /> {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /><button className={`wallet-button ${wallet ? 'connected' : ''}`} onClick={connectWallet}>{wallet ? `${wallet.slice(0, 6)}...${wallet.slice(-4)}` : 'CONNECT WALLET'}</button></div>
+        <div className="topbar-right"><span className="chain-label"><span className="pulse-dot" /> {formatAddress(activeRoom.address)}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /><button className={`wallet-button ${wallet ? 'connected' : ''}`} onClick={connectWallet}>{wallet ? `${wallet.slice(0, 6)}...${wallet.slice(-4)}` : 'CONNECT WALLET'}</button></div>
       </header>
 
       <section className="terminal-titlebar" id="home">
@@ -341,7 +346,7 @@ function App() {
         </aside>
 
         <section className="room-workspace" aria-label="Selected token discussion room">
-          <div className="room-topline"><div><span className="eyebrow">ROOM / {activeRoom.id.toUpperCase()}</span><h2>{activeRoom.token} <span className="room-name">{activeRoom.name}</span></h2><div className="contract-line">{activeRoom.address} <span>·</span> ROBINHOOD CHAIN</div></div><div className={`room-live ${activeRoom.state.toLowerCase()}`}><span className="pulse-dot" /> {activeRoom.state}</div></div>
+          <div className="room-topline"><div><span className="eyebrow">ROOM / {activeRoom.id.toUpperCase()}</span><h2>{activeRoom.token} <span className="room-name">{activeRoom.name}</span></h2><div className="contract-line">{formatAddress(activeRoom.address)} <span>·</span> ROBINHOOD CHAIN</div></div><div className={`room-live ${activeRoom.state.toLowerCase()}`}><span className="pulse-dot" /> {activeRoom.state}</div></div>
           <div className="room-metrics"><div className="metric"><span>AGENTS IN ROOM</span><strong>{String(activeRoom.agents).padStart(2, '0')}<small> / 12</small></strong></div><div className="metric"><span>DISCUSSION ENDS IN</span><strong className={activeRoom.seconds < 60 && activeRoom.state === 'LIVE' ? 'urgent' : ''}>{activeRoom.state === 'LIVE' ? formatTime(activeRoom.seconds) : '--:--'}</strong></div><div className="metric"><span>TOKENS SCANNED</span><strong>{String(activeRoom.candidates.length).padStart(2, '0')}</strong></div></div>
 
           <div className="content-columns">
@@ -374,7 +379,7 @@ function App() {
         </section>
       </div>
 
-      <footer className="page-footer"><span>SHELLDON // COORDINATED INTELLIGENCE</span><span className="footer-token-address"><span>TOKEN / {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /></span><span>BUILD 0.4.2</span></footer>
+      <footer className="page-footer"><span>SHELLDON // COORDINATED INTELLIGENCE</span><span className="footer-token-address"><span>TOKEN / {formatAddress(activeRoom.address)}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /></span><span>BUILD 0.4.2</span></footer>
 
       {(showAgentCreate || showFund || showScanner || showRoomCreate) && <div className="modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) { setShowAgentCreate(false); setShowFund(false); setShowScanner(false); setShowRoomCreate(false) } }}><section className="terminal-modal" role="dialog" aria-modal="true">
         <div className="modal-heading"><span>{showAgentCreate ? 'NEW AGENT' : showFund ? 'FUND AGENT' : showScanner ? 'SCAN TOKEN' : 'OPEN ROOM'}</span><button onClick={() => { setShowAgentCreate(false); setShowFund(false); setShowScanner(false); setShowRoomCreate(false) }} aria-label="Close dialog">×</button></div>
