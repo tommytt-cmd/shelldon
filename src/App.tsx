@@ -116,13 +116,13 @@ function App() {
     }
   }
 
-  function startOnboarding() {
-    /*setAgentDraft(agentName)
+  /*function startOnboarding() {
+    setAgentDraft(agentName)
     setOnboardingStep(0)
     setOnboardingWalletMessage('')
     setOnboardingRoomId(rooms.find((room) => room.state === 'LIVE')?.id ?? '')
-    setShowOnboarding(true)*/
-  }
+    setShowOnboarding(true)
+  }*/
 
   async function connectOnboardingWallet() {
     if (!window.ethereum) {
