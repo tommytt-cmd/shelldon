@@ -15,6 +15,7 @@
 .terminal-shell::after { right: -4px; bottom: -4px; }
 .topbar { min-height: 70px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(83, 192, 102, .24); gap: 20px; }
 .wordmark { display: inline-flex; align-items: center; gap: 10px; color: #d9f3d9; text-decoration: none; font-weight: 700; letter-spacing: 1.2px; font-size: 14px; }
+.shelldon-logo { display: block; width: 34px; height: 34px; object-fit: contain; }
 .brand-mark { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #54eb7d; color: #52f47e; font-size: 15px; box-shadow: 2px 2px 0 rgba(83, 244, 126, .2); }
 .wordmark-suffix { color: #64866a; font-size: 10px; font-weight: 400; }
 .topbar-right, .title-meta { display: flex; align-items: center; gap: 18px; }
@@ -306,6 +307,7 @@ h2 { margin: 0; color: #d0efd1; font-size: 22px; letter-spacing: .4px; }
   .landing-shell { width: calc(100% - 20px); padding: 0 15px 16px; }
   .landing-nav { min-height: 61px; }
   .landing-wordmark { gap: 7px; font-size: 11px; }
+  .shelldon-logo { width: 29px; height: 29px; }
   .landing-nav-right { gap: 10px; }
   .landing-nav-right > span { gap: 5px; font-size: 7px; letter-spacing: 0; }
   .landing-enter { min-height: 30px; padding: 0 7px; font-size: 7px; }

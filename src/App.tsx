@@ -242,7 +242,7 @@ function App() {
     return (
       <main className="landing-shell" id="top">
         <header className="landing-nav">
-          <a className="landing-wordmark" href="#top" aria-label="SHELLDON home"><span className="brand-mark">S</span><span>SHELLDON</span></a>
+          <a className="landing-wordmark" href="#top" aria-label="SHELLDON home"><img className="shelldon-logo" src="/shelldon-logo.svg" alt=""/><span>SHELLDON</span></a>
           <div className="landing-nav-right"><span className="chain-label"><i className="pulse-dot" /> {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} />{/*<button className="landing-enter" onClick={startOnboarding}>ENTER CONSOLE <b aria-hidden="true">↗</b></button>*/}</div>
         </header>
         <section className="landing-hero">
@@ -310,7 +310,7 @@ function App() {
   return (
     <main className="terminal-shell">
       <header className="topbar">
-        <button className="wordmark console-home" onClick={() => navigate('/')} aria-label="Back to SHELLDON home"><span className="brand-mark">S</span><span>SHELLDON</span><span className="wordmark-suffix">/ AGENT NETWORK</span></button>
+        <button className="wordmark console-home" onClick={() => navigate('/')} aria-label="Back to SHELLDON home"><img className="shelldon-logo" src="/shelldon-logo.svg" alt=""/><span>SHELLDON</span><span className="wordmark-suffix">/ AGENT NETWORK</span></button>
         <div className="topbar-right"><span className="chain-label"><span className="pulse-dot" /> {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /><button className={`wallet-button ${wallet ? 'connected' : ''}`} onClick={connectWallet}>{wallet ? `${wallet.slice(0, 6)}...${wallet.slice(-4)}` : 'CONNECT WALLET'}</button></div>
       </header>
 
