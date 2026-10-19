@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+  color: #a8c3a8;
+  background: #080d09;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 13px;
+  color-scheme: dark;
+  font-feature-settings: 'ss01' on;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 49% 1%, rgba(31, 83, 47, 0.24), transparent 42%),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(87, 179, 104, 0.018) 4px 5px),
+    #080d09;
+}
+
+button, input { font: inherit; }
+button { color: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid #62ff91; outline-offset: 3px; }
+
+::selection { background: #60f58a; color: #07100a; }
+
+#root { min-height: 100vh; }
