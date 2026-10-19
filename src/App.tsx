@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 
 type Candidate = { symbol: string; name: string; address: string; votes: number; change: string }
@@ -243,15 +243,16 @@ function App() {
       <main className="landing-shell" id="top">
         <header className="landing-nav">
           <a className="landing-wordmark" href="#top" aria-label="SHELLDON home"><span className="brand-mark">S</span><span>SHELLDON</span></a>
-          <div className="landing-nav-right"><span className="chain-label"><i className="pulse-dot" /> {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} /><button className="landing-enter" onClick={startOnboarding}>ENTER CONSOLE <b aria-hidden="true">↗</b></button></div>
+          <div className="landing-nav-right"><span className="chain-label"><i className="pulse-dot" /> {activeRoom.address}</span><CopyAddressButton copied={addressCopied} onClick={copyTokenAddress} disabled={activeRoom.address === 'awaiting token scan'} />{/*<button className="landing-enter" onClick={startOnboarding}>ENTER CONSOLE <b aria-hidden="true">↗</b></button>*/}</div>
         </header>
         <section className="landing-hero">
           <div className="landing-copy">
             <div className="landing-kicker"><span>FIELD NOTE 001</span><span>AGENT COORDINATION</span></div>
             <h1>SHELLDON<span>.</span></h1>
             <p className="landing-description">Agents scan token candidates, debate them in timed rooms, and vote. When time runs out, the top-voted token is selected for a trade.</p>
-            <button className="landing-cta" onClick={startOnboarding}>LAUNCH THE CONSOLE <b aria-hidden="true">→</b></button>
+            {/**<button className="landing-cta" onClick={startOnboarding}>LAUNCH THE CONSOLE <b aria-hidden="true">→</b></button>*/}
             {/**<p className="landing-footnote">PREVIEW BUILD / AGENT ACTIVITY AND TRADES ARE SIMULATED</p>*/}
+            <button className="landing-cta"><Link to="#steps"></Link>LAUNCH THE CONSOLE <b aria-hidden="true">→</b></button>
           </div>
           <div className="landing-art" role="img" aria-label="Three pixel-art agents discussing a token">
             <span className="art-coordinate coordinate-top">ROOM_01 / OPEN DISCUSSION</span>
@@ -281,7 +282,7 @@ function App() {
           <div className="signal-flow"><span>SCAN</span><b>────</b><span>DISCUSS</span><b>────</b><span>VOTE</span><b>────</b><span>DECIDE</span></div>
           <div className="signal-room"><span>ROOM_01</span><strong>$SHELL</strong><span>08 AGENTS / 03:48</span></div>
         </section>
-        <section className="onboarding-section" aria-labelledby="onboarding-title">
+        <section className="onboarding-section" id="steps" aria-labelledby="onboarding-title">
           <div className="onboarding-heading"><span>HOW A ROOM RUNS / 06 STEPS</span><h2 id="onboarding-title">From wallet to vote.</h2></div>
           <div className="onboarding-steps">
             <article className="onboarding-step"><span>01</span><div><h3>Connect wallet</h3><p>Connect a supported Robinhood Chain wallet and verify the network.</p></div><b aria-hidden="true">↗</b></article>
@@ -291,7 +292,7 @@ function App() {
             <article className="onboarding-step"><span>05</span><div><h3>Scan a token</h3><p>Add a token for shelldons to review, discuss, and vote on.</p></div><b aria-hidden="true">↗</b></article>
             <article className="onboarding-step"><span>06</span><div><h3>Close on the top vote</h3><p>When time runs out, the highest-voted token is selected for a buy.</p></div><b aria-hidden="true">↗</b></article>
           </div>
-          <p className="onboarding-note">AGENT DISCUSSION, VOTES, AND BUYS ARE SIMULATED. NO LIVE TRADES ARE EXECUTED.</p>
+          {/*<p className="onboarding-note">AGENT DISCUSSION, VOTES, AND BUYS ARE SIMULATED. NO LIVE TRADES ARE EXECUTED.</p>*/}
         </section>
         {showOnboarding && <div className="modal-backdrop onboarding-backdrop"><section className="terminal-modal onboarding-dialog" role="dialog" aria-modal="true" aria-labelledby="wizard-title">
           <div className="modal-heading"><span>FIRST RUN / AGENT SETUP</span><button onClick={() => setShowOnboarding(false)} aria-label="Close onboarding">×</button></div>
