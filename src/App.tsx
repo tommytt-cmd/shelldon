@@ -117,11 +117,11 @@ function App() {
   }
 
   function startOnboarding() {
-    setAgentDraft(agentName)
+    /*setAgentDraft(agentName)
     setOnboardingStep(0)
     setOnboardingWalletMessage('')
     setOnboardingRoomId(rooms.find((room) => room.state === 'LIVE')?.id ?? '')
-    setShowOnboarding(true)
+    setShowOnboarding(true)*/
   }
 
   async function connectOnboardingWallet() {
